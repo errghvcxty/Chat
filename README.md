@@ -1,4 +1,4 @@
-VitalMen
+
 Tutorial de como rodar o site localmente:
 
 ❗ Instale o Python
