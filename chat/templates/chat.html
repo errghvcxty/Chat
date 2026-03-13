@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Chat</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="contatos">
+
+<h3>Contatos</h3>
+
+<input id="nomeContato" placeholder="Nome do contato">
+
+<button onclick="adicionarContato()">Adicionar</button>
+
+<ul id="lista-contatos"></ul>
+
+</div>
+
+
+<div class="chat">
+
+<h3 id="nome-contato">Selecione um contato</h3>
+
+<div id="mensagens"></div>
+
+<div class="enviar">
+
+<input id="texto" placeholder="Digite uma mensagem">
+
+<button onclick="enviar()">Enviar</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const usuario_id = Number("{{ usuario_id }}");
+</script>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

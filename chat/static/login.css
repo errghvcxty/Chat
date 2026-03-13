@@ -1,0 +1,61 @@
+.login-container{
+width:300px;
+margin:120px auto;
+background:#111;
+padding:30px;
+border-radius:10px;
+text-align:center;
+}
+
+.login-container input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:none;
+border-radius:6px;
+background:#1f1f1f;
+color:white;
+}
+
+.login-container button{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#6c3df4;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
+/* ============================================================
+   VARIÁVEIS DE CORES (PADRÃO INSTAGRAM DARK)
+   ============================================================ */
+:root {
+    --bg-dark: #000000;
+    --bg-sidebar: #000000;
+    --bg-input: #262626;
+    --border-color: #262626;
+    --text-primary: #ffffff;
+    --text-secondary: #a8a8a8;
+    --insta-gradient: linear-gradient(45deg, #7a3cff, #4c6ef5);
+    --bubble-received: #262626;
+}
+
+/* ============================================================
+   ESTILO GERAL
+   ============================================================ */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
