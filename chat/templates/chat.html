@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chat</title>
 
 <link rel="stylesheet" href="/static/style.css">
@@ -10,42 +12,66 @@
 
 <body>
 
-<div class="container">
+<div class="app">
 
-<div class="contatos">
+<!-- SIDEBAR -->
 
-<h3>Contatos</h3>
+<div class="sidebar">
 
-<input id="nomeContato" placeholder="Nome do contato">
+<h2>Chat</h2>
 
-<button onclick="adicionarContato()">Adicionar</button>
+<div class="search">
+
+<input
+id="pesquisa"
+type="text"
+placeholder="Pesquisar usuário"
+/>
+
+<button id="btnPesquisar">
+Pesquisar
+</button>
+
+</div>
 
 <ul id="lista-contatos"></ul>
 
 </div>
 
+<!-- CHAT -->
 
 <div class="chat">
 
-<h3 id="nome-contato">Selecione um contato</h3>
+<div class="chat-header">
+
+<div id="chat-avatar" class="avatar">?</div>
+
+<span id="chat-nome">
+Selecione um contato
+</span>
+
+</div>
 
 <div id="mensagens"></div>
 
-<div class="enviar">
+<div class="chat-input">
 
-<input id="texto" placeholder="Digite uma mensagem">
+<input
+id="texto"
+type="text"
+placeholder="Digite uma mensagem..."
+autocomplete="off"
+/>
 
-<button onclick="enviar()">Enviar</button>
+<button id="btnEnviar">
+Enviar
+</button>
 
 </div>
 
 </div>
 
 </div>
-
-<script>
-const usuario_id = Number("{{ usuario_id }}");
-</script>
 
 <script src="/static/script.js"></script>
 
