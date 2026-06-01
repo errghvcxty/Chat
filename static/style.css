@@ -94,7 +94,7 @@ body{
 }
 
 .contato:hover{
-    background:rgba(255,255,255,.05);
+    background:rgb(255, 255, 255);
 }
 
 .avatar{
