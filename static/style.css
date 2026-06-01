@@ -20,20 +20,19 @@
 body{
     background:var(--bg);
     height:100vh;
-    overflow:hidden;
 }
 
+/* APP */
 .app{
-    display:flex;
     height:100vh;
 }
 
 /* SIDEBAR */
-
 .sidebar{
-    width:320px;
     background:var(--card);
     border-right:1px solid var(--border);
+    height:100vh;
+    overflow:hidden;
     display:flex;
     flex-direction:column;
 }
@@ -41,9 +40,6 @@ body{
 .sidebar-header{
     padding:20px;
     border-bottom:1px solid var(--border);
-}
-
-.sidebar-header h4{
     color:white;
 }
 
@@ -67,13 +63,8 @@ body{
     width:45px;
     border:none;
     border-radius:12px;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
     color:white;
-    cursor:pointer;
 }
 
 #lista-contatos{
@@ -90,23 +81,19 @@ body{
     padding:12px;
     border-radius:14px;
     cursor:pointer;
-    transition:.25s;
+    transition:.2s;
+    color:white;
 }
 
 .contato:hover{
-    background:rgb(255, 255, 255);
+    background:rgba(255,255,255,0.08);
 }
 
 .avatar{
     width:45px;
     height:45px;
     border-radius:50%;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
-
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
     display:flex;
     align-items:center;
     justify-content:center;
@@ -114,51 +101,47 @@ body{
 }
 
 /* CHAT */
-
 .chat{
-    flex:1;
     display:flex;
     flex-direction:column;
+    height:100vh;
 }
 
 .chat-header{
-    height:80px;
+    height:70px;
     border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
-    padding:0 25px;
+    padding:0 20px;
 }
 
 .header-info{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
 }
 
 .avatar-large{
-    width:50px;
-    height:50px;
+    width:45px;
+    height:45px;
     border-radius:50%;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
-
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     color:white;
 }
 
 .header-info h5{
     color:white;
+    margin:0;
 }
 
 .header-info small{
     color:#22c55e;
 }
 
+/* MENSAGENS */
 #mensagens{
     flex:1;
     overflow-y:auto;
@@ -178,11 +161,7 @@ body{
 .minha{
     align-self:flex-end;
     color:white;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
 }
 
 .outro{
@@ -191,10 +170,11 @@ body{
     background:var(--card);
 }
 
+/* INPUT */
 .enviar{
     display:flex;
     gap:10px;
-    padding:15px;
+    padding:12px;
     border-top:1px solid var(--border);
 }
 
@@ -202,7 +182,7 @@ body{
     flex:1;
     padding:14px;
     border:none;
-    border-radius:15px;
+    border-radius:12px;
     background:var(--card);
     color:white;
     outline:none;
@@ -211,16 +191,12 @@ body{
 .enviar button{
     width:55px;
     border:none;
-    border-radius:15px;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary2)
-    );
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
     color:white;
-    cursor:pointer;
 }
 
+/* PLACEHOLDER */
 .placeholder{
     margin:auto;
     text-align:center;
@@ -232,36 +208,20 @@ body{
     margin-bottom:15px;
 }
 
+/* ANIMAÇÃO */
 @keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-    .app{
-        flex-direction:column;
-    }
-
-    .sidebar{
-        width:100%;
-        height:35%;
-    }
+/* MOBILE FIX */
+@media (max-width:768px){
 
     .chat{
-        height:65%;
+        height:calc(100vh - 56px);
     }
 
     .mensagem{
         max-width:90%;
     }
-
 }
