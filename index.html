@@ -2,15 +2,18 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="/static/login.css">
+<title>Chat da Resenha</title>
+
+<link rel="stylesheet" href="static/login.css">
+
 </head>
 <body>
 
 <div class="login-container">
 
-    <h2>Entrar no chat</h2>
+    <h2>Chat da Resenha</h2>
 
     <input
         id="username"
@@ -28,6 +31,10 @@
         Entrar
     </button>
 
+    <button onclick="register()">
+        Criar Conta
+    </button>
+
 </div>
 
 <script>
@@ -38,44 +45,112 @@ const API_URL =
 async function login(){
 
     const username =
-    document.getElementById("username").value;
+    document.getElementById("username").value.trim();
 
     const password =
-    document.getElementById("password").value;
+    document.getElementById("password").value.trim();
 
-    const resposta = await fetch(
-        `${API_URL}/login`,
-        {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                username,
-                password
-            })
-        }
-    );
-
-    const usuario = await resposta.json();
-
-    if(!resposta.ok){
-        alert(usuario.error);
+    if(!username || !password){
+        alert("Preencha todos os campos");
         return;
     }
 
-    localStorage.setItem(
-        "usuario_id",
-        usuario.id
-    );
+    try{
 
-    localStorage.setItem(
-        "username",
-        usuario.username
-    );
+        const resposta = await fetch(
+            `${API_URL}/login`,
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    username,
+                    password
+                })
+            }
+        );
 
-    window.location.href =
-    "chat.html";
+        const usuario =
+        await resposta.json();
+
+        if(!resposta.ok){
+            alert(usuario.error);
+            return;
+        }
+
+        localStorage.setItem(
+            "usuario_id",
+            usuario.id
+        );
+
+        localStorage.setItem(
+            "username",
+            usuario.username
+        );
+
+        window.location.href =
+        "templates/chat.html";
+
+    }catch(erro){
+
+        console.error(erro);
+
+        alert(
+            "Erro ao conectar com a API"
+        );
+    }
+}
+
+async function register(){
+
+    const username =
+    document.getElementById("username").value.trim();
+
+    const password =
+    document.getElementById("password").value.trim();
+
+    if(!username || !password){
+        alert("Preencha todos os campos");
+        return;
+    }
+
+    try{
+
+        const resposta = await fetch(
+            `${API_URL}/register`,
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    username,
+                    password
+                })
+            }
+        );
+
+        const dados =
+        await resposta.json();
+
+        if(!resposta.ok){
+            alert(dados.error);
+            return;
+        }
+
+        alert(
+            "Conta criada com sucesso!"
+        );
+
+    }catch(erro){
+
+        console.error(erro);
+
+        alert(
+            "Erro ao conectar com a API"
+        );
+    }
 }
 
 </script>
