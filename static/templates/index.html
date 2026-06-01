@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="login-container">
+
+    <h2>Entrar no chat</h2>
+
+    <input
+        id="username"
+        type="text"
+        placeholder="Usuário"
+    >
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Senha"
+    >
+
+    <button onclick="login()">
+        Entrar
+    </button>
+
+</div>
+
+<script>
+
+const API_URL =
+"https://apichat-production-e8b7.up.railway.app";
+
+async function login(){
+
+    const username =
+    document.getElementById("username").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const resposta = await fetch(
+        `${API_URL}/login`,
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                username,
+                password
+            })
+        }
+    );
+
+    const usuario = await resposta.json();
+
+    if(!resposta.ok){
+        alert(usuario.error);
+        return;
+    }
+
+    localStorage.setItem(
+        "usuario_id",
+        usuario.id
+    );
+
+    localStorage.setItem(
+        "username",
+        usuario.username
+    );
+
+    window.location.href =
+    "chat.html";
+}
+
+</script>
+
+</body>
+</html>
